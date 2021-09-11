@@ -1,9 +1,15 @@
 import * as React from 'react';
-
-import {connect} from 'react-redux';
+// @ts-ignore
+import { graphql } from 'babel-plugin-relay/macro'
+import {
+  RelayEnvironmentProvider,
+  loadQuery,
+  usePreloadedQuery,
+} from 'react-relay/hooks';
 import {block as bem} from 'bem-cn';
 
-import {State as StoreTree} from 'store/index';
+import RelayEnvironment from "relay/environment";
+import fetch from "relay/fetch";
 
 import './index.scss';
 
@@ -15,18 +21,26 @@ interface State {
 
 const block = bem('app');
 
-export class App extends React.Component<Props, State> {
+const RepositoryNameQuery = graphql`
+    query AppRepositoryNameQuery {
+        repository(owner: "facebook", name: "relay") {
+            name
+        }
+    }
+`;
+
+const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery, {
+  /* query variables */
+});
+
+export default class App extends React.Component<Props, State> {
   public render() {
+    const data = usePreloadedQuery(RepositoryNameQuery, preloadedQuery);
+
     return (
         <section className={block()}>
-          <p>Hallow World!</p>
+          <p>{data.repository.name}</p>
         </section>
     );
   }
 }
-
-export default connect(
-    (state: StoreTree) => ({}),
-    (dispatch) => ({}),
-)(App);
-

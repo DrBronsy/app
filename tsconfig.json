@@ -8,6 +8,7 @@
     "experimentalDecorators": true,
     "target": "es5",
     "jsx": "react",
+    "typeRoots": ["./node_modules/@types", "./index.d.ts"],
     "lib": [
       "webworker",
       "es6",
@@ -18,17 +19,8 @@
       "components/*": [
         "src/components/*"
       ],
-      "store/*": [
-        "src/store/*"
-      ],
-      "reducers/*": [
-        "src/reducers/*"
-      ],
-      "actions/*": [
-        "src/actions/*"
-      ],
-      "models/*": [
-        "src/models/*"
+      "relay/*": [
+        "src/relay/*"
       ],
       "images/*": [
         "src/images/*"

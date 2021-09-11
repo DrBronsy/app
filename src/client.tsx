@@ -1,24 +1,22 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-import {Provider} from 'react-redux';
+import {
+  RelayEnvironmentProvider
+} from 'react-relay/hooks';
 import {BrowserRouter} from 'react-router-dom';
-
-import {createStore} from 'store/index';
 
 import App from 'components/App';
 
-const store = createStore((window as any).__PRELOADED_STATE__);
-
+import RelayEnvironment from 'relay/environment';
 import './scss/index.scss';
 
 ReactDOM.hydrate(
     (
-        <Provider store={store}>
+        <RelayEnvironmentProvider environment={RelayEnvironment}>
           <BrowserRouter>
             <App />
           </BrowserRouter>
-        </Provider>
+        </RelayEnvironmentProvider>
     ),
     document.getElementById('root'),
 );

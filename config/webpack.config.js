@@ -13,6 +13,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const RelayCompilerLanguageTypescript = require('relay-compiler-language-typescript').default;
+const RelayCompilerWebpackPlugin = require('relay-compiler-webpack-plugin');
 
 const Targets = {
   CLIENT: 'client',
@@ -274,6 +276,11 @@ module.exports = (target, mode) => {
             to: path.resolve(__dirname, `../dist/favicons`)
           }
         ]
+      }),
+      new RelayCompilerWebpackPlugin({
+        languagePlugin: RelayCompilerLanguageTypescript,
+        schema: path.join(__dirname, '/../data/schema.graphql'),
+        src: path.join(__dirname, '/../src'),
       })
     ],
     optimization: {

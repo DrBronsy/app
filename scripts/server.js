@@ -23,6 +23,10 @@ const STATIC_GZIP = require('express-static-gzip');
 const COMPRESSION = require('compression');
 const CSRF = require('csurf');
 
+// graphql
+const { graphqlHTTP } = require('express-graphql');
+const { buildSchema } = require('graphql');
+
 // Get express app
 const APP = EXPRESS();
 
@@ -72,7 +76,11 @@ APP.use(
     )
 );
 
-// Add subroutines
+APP.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
 
 // Add server site rendering
 require('./server/render.js')(APP);
