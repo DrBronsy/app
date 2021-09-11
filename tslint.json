@@ -1,0 +1,35 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-react"
+  ],
+  "jsRules": {},
+  "rules": {
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "interface-name": false,
+    "no-empty-interface": false,
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "no-var-requires": false,
+    "object-literal-sort-keys": false,
+    "no-trailing-whitespace": false,
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false,
+    "jsx-alignment": false,
+    "object-literal-key-quotes": false,
+    "ordered-imports": false,
+    "max-line-length": false,
+    "no-object-literal-type-assertion": false,
+    "no-console": false,
+    "no-any": false,
+    "max-classes-per-file": false,
+    "no-bitwise": false,
+    "no-conditional-assignment": false,
+    "no-shadowed-variable": false
+  },
+  "rulesDirectory": []
+}

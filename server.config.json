@@ -1,0 +1,35 @@
+{
+  "apps": [
+    {
+      "name": "app",
+      "script": "./scripts/server.js",
+      "node_args": [],
+      "instances": "1",
+      "exec_mode": "cluster",
+      "watch": true,
+      "cwd": ".",
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "development": {
+        "PORTS": {
+          "MAIN": "7600",
+          "HTTP": "7601",
+          "HTTP2": "7602"
+        }
+      },
+      "production": {
+        "PORTS": {
+          "MAIN": "7700",
+          "HTTP": "7701",
+          "HTTP2": "7702"
+        }
+      },
+      "error_file": "err.log",
+      "out_file": "out.log",
+      "merge_logs": true,
+      "log_type": "json",
+      "log_date_format": "YYYY-MM-DD HH:mm Z"
+    }
+  ]
+}
